@@ -1,0 +1,33 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd"
+				   >
+	<property name="type.date" value="date"/>
+
+	<changeSet id="Kalender" author="S. Mainz">
+		<createTable tableName="kalender">
+			<column name="datum"
+					type="${type.date}"
+			/>
+		</createTable>
+		<createIndex tableName="kalender" indexName="kalender_idx_datum">
+			<column name="datum"
+					type="${type.date}">
+			</column>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="Import Data" author="S. Mainz">
+		<loadData
+				encoding="UTF-8"
+				file="data/some_data.csv"
+				quotchar="'"
+				relativeToChangelogFile="true"
+				separator=";"
+				tableName="kalender">
+			<column name="datum" header="datum" type="DATE" />
+		</loadData>
+	</changeSet>
+
+</databaseChangeLog>

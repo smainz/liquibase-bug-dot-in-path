@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>liquibase-bug-dot-in-path</artifactId>
+	<groupId>smainz</groupId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+
+	<name>Liquibase Bug: dot in path</name>
+
+	<properties>
+		<!-- Common global settings -->
+		<java.version>11</java.version>
+		<project.source.version>${java.version}</project.source.version>
+		<project.target.version>${java.version}</project.target.version>
+		<project.encoding>UTF-8</project.encoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<autoVersionSubmodules>true</autoVersionSubmodules>
+		<!-- dependency versions -->
+
+		<!-- plugin version -->
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+
+		<!-- Liquibase configuration -->
+
+		<liquibase.version>4.4.3</liquibase.version>
+	</properties>
+
+	<dependencies>
+		<!-- 
+		    ******************************************************************		 
+		    **           Runtime dependencies (test and runtime)            **
+			******************************************************************
+		-->		
+
+
+		<!-- 
+		    ******************************************************************		 
+		    **                  Test only dependencies 		                **
+			******************************************************************
+		-->	
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+			<version>1.4.200</version>
+		    <scope>test</scope>
+		</dependency>
+
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<release>${java.version}</release>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
